@@ -101,7 +101,7 @@
     <tbody>
         <tr>
             <td rowspan="2">
-                attachEvent(type,callback)            
+                attachEvent(type,callback) (IE)           
             </td>
              <td>type</td>
              <td>事件名 如：onclick、onsubmit、onchange等</td>
@@ -112,7 +112,7 @@
         </tr>
          <tr>
             <td rowspan="3">
-                addEventListener(type,callback,capture)           
+                addEventListener(type,callback,capture)（标准浏览器）       
             </td>
              <td>type</td>
              <td>事件名 ，没有“on”前缀 如：click、submit、change</td>
