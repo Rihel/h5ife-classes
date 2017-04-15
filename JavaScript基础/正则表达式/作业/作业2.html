@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            font-weight: normal;
+            font-style: normal;
+            font-family: 'Proxima Nova Soft Regular",Arial,sans-serif';
+            line-height: 1;
+            box-sizing: border-box;
+        }
+        
+        body,
+        html {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .box {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url(bg.jpg) no-repeat center;
+            background-size: cover;
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+            z-index: 11;
+        }
+        
+        .box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .3);
+            z-index: 100;
+        }
+        
+        .form {
+            z-index: 22;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, .5);
+            background-color: rgba(255, 255, 255, .6);
+            transform: translate(-50%, -50%);
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, .7);
+        }
+        
+        .form h1 {
+            margin: 15px 0;
+            color: #fff;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .form .form-group {
+            margin: 10px 0;
+        }
+        
+        .form .form-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .form .form-group input[type="text"],
+        .form .form-group input[type="password"] {
+            width: 100%;
+            padding: 5px 15px;
+            border: 1px solid #293b4d;
+            border-radius: 4px;
+        }
+        
+        .form .form-group input[type="button"],
+        .form input[type="submit"] {
+            margin-top: 10px;
+            padding: 5px 15px;
+            border: none;
+            background: #72ade8;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 5px 0 #4587ca;
+        }
+        
+        .form .form-group input[type="text"]:focus,
+        .form .form-group input[type="password"]:focus {
+            outline: none;
+            box-shadow: inset 0 0 5px #293b4d;
+        }
+        
+        .form .form-group input[type="button"]:focus,
+        .form input[type="submit"]:focus {
+            outline: none;
+        }
+        
+        .form .form-group input[type="button"]:active,
+        .form input[type="submit"]:active {
+            background-color: #4587ca;
+            box-shadow: 0 0 0 #4587ca, inset 1px 1px 1px rgba(0, 0, 0, .5);
+            text-shadow: -1px 0 1px #000;
+        }
+        
+        .form .form-group input[type="button"]:disabled,
+        .form input[type="submit"]:disabled {
+            background-color: rgba(255, 255, 255, .5);
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <form class="form">
+        <h1>注册</h1>
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input class="username" type="text" name="username" placeholder="请输入用户名">
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input class="password" type="password" name="password" placeholder="请输入密码">
+        </div>
+        <div class="form-group">
+            <label for="surepassword">确认密码</label>
+            <input class="surepassword" type="password" name="surepassword" placeholder="请确认密码">
+        </div>
+        <div class="form-group">
+            <input class="veri" type="text" name="veri" placeholder="输入验证码">
+            <input class="veri-btn" type="button" value="获取验证码" disabled>
+        </div>
+        <input class="reg-btn" type="submit" value="注 册" disabled>
+    </form>
+    <!--
+
+        使用正则表达式，进行表单验证
+
+        验证规则：
+        1.用户名只能够使用数字或者字母组合，长度不得低于8
+        2.用户名只能够使用数字或者字母组合，长度不得低于11
+        3.确认密码和密码必须一致
+        4.使用正则表达式进行手机号码检测，开头为 13... 15... 18...,验证成功开始获取验证码
+        5.验证码长度不得小于8，数字加字母，大小写都可以，验证通过开启注册按钮
+        6.注册成功后，将用户名和密码储存在cookie
+
+    -->
+</body>
+
+</html>
